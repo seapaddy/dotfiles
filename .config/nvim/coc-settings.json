@@ -1,0 +1,19 @@
+{
+    "suggest.autoTrigger": "trigger",
+    "latex.build.executable": "xelatex",
+    "latex.build.args": ["-output-directory=compiled"],
+    "latex.build.onSave": true,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": [".ccls-root", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                }
+            }
+        }
+    }
+}
+
