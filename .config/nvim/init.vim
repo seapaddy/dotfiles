@@ -36,7 +36,7 @@ filetype plugin indent on
 set number
 set relativenumber
 set tabstop=4                 "number of spaces for a tab
-set shiftwidth=4              "number of spaces for a >> 
+set shiftwidth=4              "number of spaces for a >>
 set expandtab                 "space characters when tab is pressed
 set signcolumn=yes            "left side errors always visible
 " spelling
@@ -47,8 +47,8 @@ autocmd FileType gitcommit setlocal spell
 nmap <leader>s : set spell!<CR>
 nmap <leader>w : set wrap!<CR>
 nmap <leader>j : set list!<CR>
-set listchars=tab:►\ ,eol:¬ 
-set lcs=space:•
+"set listchars=tab:►\ ,trail:_,eol:¬,space:•
+set listchars=tab:►\ ,trail:*,eol:¬,space:·
 
 " line wrapping 
 autocmd FileType markdown,text setlocal tw=100
