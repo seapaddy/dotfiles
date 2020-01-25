@@ -68,6 +68,9 @@ PROMPT_COMMAND='VENV="\$(virtualenv_info)"; \
 # dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# environmental variables
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # fzf
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
