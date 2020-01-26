@@ -68,7 +68,7 @@ PROMPT_COMMAND='VENV="\$(virtualenv_info)"; \
 # dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# environmental variables
+# bspwm export variable
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # fzf
