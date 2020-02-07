@@ -114,10 +114,14 @@ command! -bang -nargs=* GGrep
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 " Ag and Rg don't search filename
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg 
+    \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+    \ {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " open Files, Ag
 nmap <leader>f :Files<CR>
 nmap <leader>a :Ag<CR>
+nmap <leader>r :Rg<CR>
 nmap <leader>b :Buffers<CR>
