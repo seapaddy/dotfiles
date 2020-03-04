@@ -50,6 +50,9 @@ nmap <leader>j : set list!<CR>
 "set listchars=tab:►\ ,trail:_,eol:¬,space:•
 set listchars=tab:►\ ,trail:*,eol:¬,space:·
 
+"remove highlight after search
+nmap <leader>\ : set nohlsearch!<CR>
+
 " line wrapping 
 autocmd FileType markdown,text setlocal tw=100
 
@@ -63,16 +66,16 @@ set background=dark
 "colorscheme one
 "let g:one_allow_italics=1
 
-"colorscheme solarized8
+colorscheme solarized8_high
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
 "colorscheme ayu
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
 
 call togglebg#map("<F5>")
 

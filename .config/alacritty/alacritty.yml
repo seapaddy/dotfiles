@@ -11,7 +11,7 @@ font:
   # Normal (roman) font face
   normal:
     family: Source Code Pro
-    style: Semibold
+    style: Medium
   # Bold font face
   bold:
     family: Source Code Pro
@@ -27,7 +27,29 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 8.5
+  size: 9
+
+# font:
+#   # Normal (roman) font face
+#   normal:
+#     family: SF Mono
+#     style: Medium
+#   # Bold font face
+#   bold:
+#     family: SF Mono
+#     style: Bold
+#   # Italic font face
+#   italic:
+#     family: SF Mono
+#     style: Italic
+# 
+#   # Bold italic font face
+#   bold_italic:
+#     family: SF Mono
+#     style: Bold Italic
+# 
+#   # Point size
+#   size: 8.5
 
 # Colors (Termite)
 colors:
@@ -57,4 +79,4 @@ colors:
     white:   '0xffffff'
 
 # Background opacity
-background_opacity: 0.97
+# background_opacity: 0.97

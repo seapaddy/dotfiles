@@ -33,5 +33,5 @@ fi
 picom --config ~/.config/picom/picom.conf &
 ~/.fehbg &
 nvidia-settings --load-config-only & 
-xset r rate 250 70 &
+# xset r rate 250 70 &
 exec bspwm

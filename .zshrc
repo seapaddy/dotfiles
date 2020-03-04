@@ -20,8 +20,8 @@ zstyle ':completion:*' menu select
 
 # history
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 
 # tmux
@@ -61,6 +61,9 @@ precmd () { __git_ps1 "$(virtualenv_info)%B%F{#99bbff}[%~%f%b" "%B%F{#99bbff}]%f
 # zsh syntax completion
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh syntax completion personal settings
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=#b0e5b5'
+ZSH_HIGHLIGHT_STYLES[path]=''
 
 # bspwm export variable
 export XDG_CONFIG_HOME="$HOME/.config"
