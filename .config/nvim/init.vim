@@ -18,6 +18,7 @@ Plug 'rakr/vim-togglebg'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 Plug 'lifepillar/vim-solarized8'
+Plug 'sainnhe/gruvbox-material'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -25,6 +26,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 " git
 Plug 'tpope/vim-fugitive'
+" rust
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 "=====================================================================
@@ -63,19 +66,23 @@ set termguicolors " true color display and colorschemes
 
 set background=dark
 "colorscheme palenight
+
 "colorscheme one
 "let g:one_allow_italics=1
 
-colorscheme solarized8_high
+"colorscheme solarized8_flat
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
 "colorscheme ayu
 
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
+
+"let g:gruvbox_material_background = 'hard'
+"colorscheme gruvbox-material
 
 call togglebg#map("<F5>")
 
@@ -95,7 +102,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <leader>o :NERDTreeToggle<CR>
 set splitright
 set splitbelow
-let NERDTreeQuitOnOpen=1
 
 "=====================================================================
 " 80 LINE LIMIT
@@ -103,7 +109,7 @@ let NERDTreeQuitOnOpen=1
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
     autocmd BufEnter *.cpp,*.hpp,*.c,*.h match OverLength /\%101v.*/
-    autocmd BufEnter *.tex,*.md,*.txt match OverLength /\%120v.*/
+    autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
 augroup END
 
 "=====================================================================
