@@ -1,5 +1,5 @@
 # autoload external functions
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -d $HOME/.cache/zsh/zcompdump-$ZSH_VERSION
 
 # change directory quicker
 alias ..='cd ..'
@@ -19,7 +19,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
 # history
-HISTFILE=$HOME/.zsh_history
+# HISTFILE=$HOME/.zsh_history
+HISTFILE="$HOME/.local/share/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
@@ -29,7 +30,7 @@ if [[ $DISPLAY ]]; then
 	 if [ -t 0 ] && [[ -z "$TMUX" ]] ;then
 		  ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
 		  if [[ -z "$ID" ]] ;then # if not available create a new one
-				exec tmux new-session
+				exec tmux -f $HOME/.config/tmux/tmux.conf
 		  else
 				exec tmux attach-session -t "$ID" # if available attach to it
 		  fi
@@ -70,3 +71,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# gdb
+alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init'

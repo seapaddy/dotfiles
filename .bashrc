@@ -31,7 +31,7 @@ alias pynvim='source $HOME/.virtualenvs/neovim3/bin/activate'
 alias latex='xelatex -output-directory=compiled'
 
 # history
-HISTFILE=~/.history
+HISTFILE="$XDG_DATA_HOME/bash/history"
 export HISTCONTROL=ignoreboth:erasedups
 HISTFILESIZE=102400
 HISTSIZE=102400

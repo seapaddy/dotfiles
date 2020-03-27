@@ -1,7 +1,8 @@
 {
+    "python.venvFolders": [ ".cache" ],
     "suggest.autoTrigger": "trigger",
     "latex.build.executable": "xelatex",
-    "latex.build.args": ["-output-directory=compiled"],
+    "latex.build.args": [ "-output-directory=compiled" ],
     "latex.build.onSave": true,
     "clangd.enabled": true
 }

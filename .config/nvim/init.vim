@@ -1,7 +1,7 @@
 "=====================================================================
 " PYTHON VIRTUAL ENVIRONMENT
 "=====================================================================
-let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
+let g:python3_host_prog = '$XDG_CACHE_HOME/nvim-venv/bin/python3'
 
 "=======================================================
 " PLUG.VIM PLUGIN MANAGER
