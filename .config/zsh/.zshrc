@@ -66,11 +66,9 @@ precmd () { __git_ps1 "$(virtualenv_info)%B%F{#99bbff}[%~%f%b" "%B%F{#99bbff}]%f
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=#b0e5b5'
 ZSH_HIGHLIGHT_STYLES[path]=''
 
-# bspwm export variable
-export XDG_CONFIG_HOME="$HOME/.config"
-
 # dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.config/dotfiles/.dotfiles/ --work-tree=$HOME'
 
 # gdb
 alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init'
