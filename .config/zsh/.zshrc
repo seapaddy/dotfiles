@@ -30,7 +30,7 @@ if [[ $DISPLAY ]]; then
 	 if [ -t 0 ] && [[ -z "$TMUX" ]] ;then
 		  ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
 		  if [[ -z "$ID" ]] ;then # if not available create a new one
-				exec tmux -f $HOME/.config/tmux/tmux.conf
+				exec tmux -u -f $HOME/.config/tmux/tmux.conf
 		  else
 				exec tmux attach-session -t "$ID" # if available attach to it
 		  fi

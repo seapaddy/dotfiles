@@ -3,15 +3,12 @@
 scrolling:
   history: 10000
 
-# Spaces per Tab (changes require restart)
-tabspaces: 8
-
 # Font configuration
 font:
   # Normal (roman) font face
   normal:
     family: Source Code Pro
-    style: Medium
+    style: Regular
   # Bold font face
   bold:
     family: Source Code Pro
@@ -19,7 +16,7 @@ font:
   # Italic font face
   italic:
     family: Source Code Pro
-    style: Medium Italic
+    style: Italic
 
   # Bold italic font face
   bold_italic:
@@ -72,6 +69,28 @@ font:
 #
 #  # Point size
 #  size: 8.5
+
+#font:
+#  # Normal (roman) font face
+#  normal:
+#    family: Inconsolata
+#    style: Medium
+#  # Bold font face
+#  bold:
+#    family: Inconsolata
+#    style: Medium
+#  # Italic font face
+#  italic:
+#    family: Inconsolata
+#    style: Medium Italic
+#
+#  # Bold italic font face
+#  bold_italic:
+#    family: Inconsolata
+#    style: Medium Italic
+#
+#  # Point size
+#  size: 10.0
 
 schemes:
   termite: &termite
