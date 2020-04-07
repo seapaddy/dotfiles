@@ -109,7 +109,7 @@ set splitbelow
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
     autocmd BufEnter *.cpp,*.hpp,*.c,*.h match OverLength /\%101v.*/
-    autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
+    autocmd BufEnter *.md match OverLength /\%120v.*/
 augroup END
 
 "=====================================================================

@@ -7,11 +7,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-export CLICOLOR=1
 # ls options quicker
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias l='ls -laF'
+
+# use nvim as default
+alias vi='nvim'
+alias t='tmux'
 
 # case insensitive completion if there is no matching case
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -26,23 +29,20 @@ SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 
 # tmux
-if [[ $DISPLAY ]]; then
-	 if [ -t 0 ] && [[ -z "$TMUX" ]] ;then
-		  ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
-		  if [[ -z "$ID" ]] ;then # if not available create a new one
-				exec tmux -u -f $HOME/.config/tmux/tmux.conf
-		  else
-				exec tmux attach-session -t "$ID" # if available attach to it
-		  fi
-	 fi
+if [ $DISPLAY ] && [ -z "$TMUX" ]; then # x started & tmux exists
+    ID="$( tmux ls |grep -vm1 attached | cut -d: -f1 )" # detached session id
+    [ -n "$ID" ] && exec tmux attach-session -t "$ID" # detached sessions attach
+
+    AT="$( tmux ls |grep -m1 attached )" # attached sessions
+    [ -z "$AT" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf # none attached new session
 fi
 
 # determine python enironment
 function virtualenv_info () {
-    if [[ -n "$VIRTUAL_ENV" ]]; then
+    if [ -n "$VIRTUAL_ENV" ]; then
         venv="${VIRTUAL_ENV##*/}"
     fi
-    [[ -n "$venv" ]] && echo "(venv:$venv) "
+    [ -n "$venv" ] && echo "(venv:$venv) "
 }
 
 # git
