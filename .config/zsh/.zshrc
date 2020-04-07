@@ -10,7 +10,7 @@ alias .....='cd ../../../..'
 # ls options quicker
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias l='ls -laF'
+alias l='ls -lAv'
 
 # use nvim as default
 alias vi='nvim'
