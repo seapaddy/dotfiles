@@ -31,7 +31,7 @@ setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 # tmux
 if [ $DISPLAY ] && [ -z "$TMUX" ]; then # x started & tmux exists
     ID="$( tmux ls |grep -vm1 attached | cut -d: -f1 )" # detached session id
-    [ -n "$ID" ] && exec tmux attach-session -t "$ID" # detached sessions attach
+    [ -n "$ID" ] && exec tmux attach-session -t "$ID" && break # detached sessions attach
 
     AT="$( tmux ls |grep -m1 attached )" # attached sessions
     [ -z "$AT" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf # none attached new session
