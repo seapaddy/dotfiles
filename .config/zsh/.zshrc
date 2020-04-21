@@ -14,7 +14,7 @@ alias l='ls -lAv'
 
 # use nvim as default
 alias vi='nvim'
-alias t='tmux'
+[ -f $HOME/.config/tmux/tmux.conf ] && alias tmux='tmux -u -f $HOME/.config/tmux/tmux.conf'
 
 # case insensitive completion if there is no matching case
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -29,20 +29,20 @@ SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 
 # tmux
-if [ $DISPLAY ] && [ -z "$TMUX" ]; then # x started & tmux exists
-    ID="$( tmux ls |grep -vm1 attached | cut -d: -f1 )" # detached session id
-    [ -n "$ID" ] && exec tmux attach-session -t "$ID" && break # detached sessions attach
-
-    AT="$( tmux ls |grep -m1 attached )" # attached sessions
-    [ -z "$AT" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf # none attached new session
-fi
+#if [ $DISPLAY ] && [ -z "$TMUX" ]; then # x started & tmux exists
+#    ID="$( tmux ls |grep -vm1 attached | cut -d: -f1 )" # detached session id
+#    [ -n "$ID" ] && exec tmux attach-session -t "$ID" && break # detached sessions attach
+#
+#    AT="$( tmux ls |grep -m1 attached )" # attached sessions
+#    [ -z "$AT" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf # none attached new session
+#fi
 
 # determine python enironment
 function virtualenv_info () {
     if [ -n "$VIRTUAL_ENV" ]; then
         venv="${VIRTUAL_ENV##*/}"
     fi
-    [ -n "$venv" ] && echo "(venv:$venv) "
+    [ -n "$venv" ] && echo "(venv:$venv)"
 }
 
 # git
@@ -52,7 +52,9 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=auto
 
 # zsh prompt
-precmd () { __git_ps1 "$(virtualenv_info)%B%F{#99bbff}[%~%f%b" "%B%F{#99bbff}]%f%b%s " }
+#precmd () { __git_ps1 "$(virtualenv_info)%B%F{#99bbff}[%~%f%b" "%B%F{#99bbff}]%f%b%s " }
+#precmd () { __git_ps1 "$(virtualenv_info) %B%F{#d08fe8}%~%f%b" "%B%F{#d08fe8}%f%b%s :: " }
+precmd () { __git_ps1 "$(virtualenv_info) %B%F{#e7c1f4}%~%f%b" "%B%F{#e7c1f4}%f%b%s :: " }
 
 # fzf
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
