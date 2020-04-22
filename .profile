@@ -3,6 +3,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"

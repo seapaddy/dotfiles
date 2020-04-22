@@ -90,7 +90,7 @@ font:
     style: Retina
 
   # Point size
-  size: 8.5
+  size: 8.0
 
 #font:
 #  # Normal (roman) font face
@@ -126,7 +126,7 @@ schemes:
       red:     '0xf05050'
       green:   '0x60b48a'
       yellow:  '0xdfaf8f'
-      blue:    '0x506070'
+      blue:    '0x73adf4'
       magenta: '0xdc8cc3'
       cyan:    '0x8cd0d3'
       white:   '0xdcdccc'
