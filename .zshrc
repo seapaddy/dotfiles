@@ -10,10 +10,12 @@ alias .....='cd ../../../..'
 # ls options quicker
 alias ls='ls -G'
 alias ll='ls -l'
-alias l='ls -laF'
+alias l='ls -lAv'
 
 # function alias
 alias audio='youtube-dl -f bestaudio' # audio download from youtube
+
+alias vi='nvim'
 
 # case insensitive completion if there is no matching case
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -21,8 +23,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
 # history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 
 # tmux
