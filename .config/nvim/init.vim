@@ -1,7 +1,7 @@
 "=====================================================================
 " PYTHON VIRTUAL ENVIRONMENT
 "=====================================================================
-let g:python3_host_prog = '$XDG_CACHE_HOME/nvim-venv/bin/python3'
+let g:python3_host_prog='$XDG_CACHE_HOME/nvim-venv/bin/python3'
 
 "=======================================================
 " PLUG.VIM PLUGIN MANAGER
@@ -19,6 +19,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sainnhe/gruvbox-material'
+Plug 'rafi/awesome-vim-colorschemes'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -58,6 +59,7 @@ nmap <leader>\ : set nohlsearch!<CR>
 
 " line wrapping 
 autocmd FileType markdown,text setlocal tw=100
+autocmd FileType tex setlocal tw=118
 
 "=====================================================================
 " COLOR SETTINGS
@@ -77,12 +79,17 @@ set background=dark
 "let ayucolor="dark"   " for dark version of theme
 "colorscheme ayu
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
 
 "let g:gruvbox_material_background = 'medium'
 "colorscheme gruvbox-material
+
+"colorscheme gruvbox
+"colorscheme deep-space
+colorscheme angr
+"colorscheme apprentice
 
 call togglebg#map("<F5>")
 
@@ -109,7 +116,7 @@ set splitbelow
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
     autocmd BufEnter *.cpp,*.hpp,*.c,*.h match OverLength /\%101v.*/
-    autocmd BufEnter *.md match OverLength /\%120v.*/
+    autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
 augroup END
 
 "=====================================================================
