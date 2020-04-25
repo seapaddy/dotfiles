@@ -43,12 +43,12 @@ function virtualenv_info () {
 # colours
 puple="#e7c1f4"
 # zsh prompt
-START="$(virtualenv_info) %B%F{${puple}}%~%f%b"
+START="%B%F{${puple}}%~%f%b"
 END="%B%F{${puple}}%f%b%s :: "
 if [ "$(command -v __git_ps1)" ]; then
-    precmd () { __git_ps1 ${START} ${END} }
+    precmd () { __git_ps1 "$(virtualenv_info) "${START} ${END} }
 else
-    PROMPT=${START}${END}
+    PROMPT="$(virtualenv_info) "${START}${END}
 fi
 
 
