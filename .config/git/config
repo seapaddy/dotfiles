@@ -1,0 +1,8 @@
+[user]
+    email = seamouses@hotmail.com
+    name = seapaddy
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+[push]
+    default = simple

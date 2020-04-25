@@ -23,8 +23,9 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 
-# use nvim if installed
-[ -x "$(command -v nvim)" ] && alias vi='nvim'
+# use programs if installed
+[ -x "$(command -v nvim)" ] && alias vi='nvim' # nvim
+[ -x "$(command -v rg)" ] && alias grep='rg' # ripgrep
 
 # determine python enironment
 function virtualenv_info () {
@@ -43,8 +44,8 @@ function virtualenv_info () {
 # colours
 puple="#e7c1f4"
 # zsh prompt
-START="%B%F{${puple}}%~%f%b"
-END="%B%F{${puple}}%f%b%s :: "
+START="%F{${puple}}%~%f"
+END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
     precmd () { __git_ps1 "$(virtualenv_info) "${START} ${END} }
 else

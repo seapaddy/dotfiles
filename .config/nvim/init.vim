@@ -1,4 +1,9 @@
 "=======================================================
+" PYTHON VIRTUAL ENVIRONMENT
+"=======================================================
+let g:python3_host_prog="$XDG_CACHE_HOME/virtual-envs/neovim/bin/python3"
+
+"=======================================================
 " PLUG.VIM PLUGIN MANAGER
 "=======================================================
 call plug#begin('~/.local/share/nvim/plugged')
@@ -68,13 +73,13 @@ set background=dark
 "colorscheme solarized8_flat
 
 "let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
+colorscheme ayu
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
 
 "let g:gruvbox_material_background = 'medium'
 "colorscheme gruvbox-material
