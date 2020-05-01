@@ -51,7 +51,6 @@ autocmd FileType gitcommit setlocal spell
 nmap <leader>s : set spell!<CR>
 nmap <leader>w : set wrap!<CR>
 nmap <leader>j : set list!<CR>
-"set listchars=tab:►\ ,trail:_,eol:¬,space:•
 set listchars=tab:►\ ,trail:*,eol:¬,space:·
 
 "remove highlight after search
@@ -60,38 +59,6 @@ nmap <leader>\ : set nohlsearch!<CR>
 " line wrapping 
 autocmd FileType markdown,text setlocal tw=100
 autocmd FileType tex setlocal tw=118
-
-"=====================================================================
-" COLOR SETTINGS
-"=====================================================================
-set termguicolors " true color display and colorschemes
-
-set background=dark
-"colorscheme palenight
-
-"colorscheme one
-"let g:one_allow_italics=1
-
-"colorscheme solarized8_flat
-
-"let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
-
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
-
-"let g:gruvbox_material_background = 'medium'
-"colorscheme gruvbox-material
-
-"colorscheme gruvbox
-"colorscheme deep-space
-colorscheme angr
-"colorscheme apprentice
-
-call togglebg#map("<F5>")
 
 "=====================================================================
 " COC.NVIM
@@ -141,3 +108,32 @@ nmap <leader>f :Files<CR>
 nmap <leader>a :Ag<CR>
 nmap <leader>r :Rg<CR>
 nmap <leader>b :Buffers<CR>
+
+"=====================================================================
+" COLOUR SETTINGS
+"=====================================================================
+set termguicolors " true colour display and colour schemes
+
+set background=dark
+"colorscheme palenight
+
+"colorscheme one
+"let g:one_allow_italics=1
+
+"colorscheme solarized8_flat
+
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
+
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
+
+"let g:gruvbox_material_background = 'medium'
+"colorscheme gruvbox-material
+
+colorscheme angr
+
+call togglebg#map("<F5>")
