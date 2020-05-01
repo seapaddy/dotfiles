@@ -18,7 +18,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
 # history
-# HISTFILE=$HOME/.zsh_history
 HISTFILE="$HOME/.local/share/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
@@ -27,6 +26,7 @@ setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 # use programs if installed
 [ -x "$(command -v nvim)" ] && alias vi='nvim' # nvim
 [ -x "$(command -v rg)" ] && alias grep='rg' # ripgrep
+[ -x "$(command -v bat)" ] && alias cat='bat' # bat
 [ -f $HOME/.config/gdb/init ] && [ -x "$(command -v gdb)" ] && \
     alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init' # gdb
 # tmux alias
@@ -49,9 +49,10 @@ function virtualenv_info () {
     GIT_PS1_SHOWUPSTREAM=auto
 
 # colours
-puple="#e7c1f4"
+puple="#f4d7f7"
+dim_yellow="#b5b39b"
 # zsh prompt
-START="%F{${puple}}%~%f"
+START="%F{${dim_yellow}}arch%f : %F{${puple}}%~%f"
 END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
     precmd () { __git_ps1 "$(virtualenv_info) "${START} ${END} }

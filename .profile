@@ -16,6 +16,7 @@ export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave/history"
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # Add cargo to $PATH
