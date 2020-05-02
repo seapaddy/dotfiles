@@ -7,25 +7,25 @@ let g:python3_host_prog='$XDG_CACHE_HOME/nvim-venv/bin/python3'
 " PLUG.VIM PLUGIN MANAGER
 "=======================================================
 call plug#begin('~/.local/share/nvim/plugged')
-" autocompletion
+" auto completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" nerdtree
-Plug 'scrooloose/nerdtree'
-" colorschemes 
-Plug 'ayu-theme/ayu-vim'
-Plug 'mhartington/oceanic-next'
+" colour toggle
 Plug 'rakr/vim-togglebg'
+" colour schemes 
+Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'rakr/vim-one'
 Plug 'lifepillar/vim-solarized8'
-Plug 'sainnhe/gruvbox-material'
+Plug 'mhartington/oceanic-next'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'rakr/vim-one'
+Plug 'sainnhe/gruvbox-material'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-" additional
+" nerdtree
+Plug 'scrooloose/nerdtree'
+" tpope: comment toggle, git
 Plug 'tpope/vim-commentary'
-" git
 Plug 'tpope/vim-fugitive'
 " rust
 Plug 'rust-lang/rust.vim'
@@ -45,7 +45,7 @@ set expandtab                 "space characters when tab is pressed
 set signcolumn=yes            "left side errors always visible
 " spelling
 setlocal spelllang=en_gb
-autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal spell  "enable spell git commits
 
 " toggle spelling, wrapping, invisibles
 nmap <leader>s : set spell!<CR>
@@ -56,7 +56,7 @@ set listchars=tab:►\ ,trail:*,eol:¬,space:·
 "remove highlight after search
 nmap <leader>\ : set nohlsearch!<CR>
 
-" line wrapping 
+" automatic line wrapping 
 autocmd FileType markdown,text setlocal tw=100
 autocmd FileType tex setlocal tw=118
 
@@ -90,23 +90,25 @@ augroup END
 " FZF
 "=====================================================================
 " Command for git grep
-" - fzf#vim#grep(command, with_column, [options], [fullscreen])
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+  \   fzf#vim#with_preview({ 'dir': systemlist('git rev-parse --show-toplevel')[0] }), <bang>0)
 
-" Ag and Rg don't search filename
-command! -bang -nargs=* Rg 
-    \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
-    \ {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Rg without searching filename
+command! -bang -nargs=* ZRg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Ag without searching filename
+command! -bang -nargs=* ZAg 
+  \ call fzf#vim#ag(<q-args>,
+  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
-" open Files, Ag
+" fzf shortcuts
 nmap <leader>f :Files<CR>
-nmap <leader>a :Ag<CR>
-nmap <leader>r :Rg<CR>
+nmap <leader>a :ZAg<CR>
+nmap <leader>r :ZRg!<CR>
 nmap <leader>b :Buffers<CR>
 
 "=====================================================================
