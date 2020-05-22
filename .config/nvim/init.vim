@@ -19,6 +19,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'rakr/vim-one'
 Plug 'sainnhe/gruvbox-material'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -54,7 +55,7 @@ nmap <leader>j : set list!<CR>
 set listchars=tab:►\ ,trail:*,eol:¬,space:·
 
 "remove highlight after search
-nmap <leader>\ : set nohlsearch!<CR>
+nmap <leader>\ : nohlsearch<CR>
 
 " automatic line wrapping 
 autocmd FileType markdown,text setlocal tw=100
@@ -136,6 +137,8 @@ set background=dark
 "let g:gruvbox_material_background = 'medium'
 "colorscheme gruvbox-material
 
-colorscheme angr
+colorscheme onehalfdark
+
+"colorscheme angr
 
 call togglebg#map("<F5>")

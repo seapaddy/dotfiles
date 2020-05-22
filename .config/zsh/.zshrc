@@ -49,8 +49,8 @@ function virtualenv_info () {
     GIT_PS1_SHOWUPSTREAM=auto
 
 # colours
-puple="#f4d7f7"
-dim_yellow="#b5b39b"
+puple="#f1bef7"
+dim_yellow="#fcf7ab"
 # zsh prompt
 START="%F{${dim_yellow}}arch%f : %F{${puple}}%~%f"
 END="%F{${puple}}%f%s :: "
@@ -63,7 +63,7 @@ fi
 # fzf
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f $HOME/.config/fzf/fzf.zsh ] && source $HOME/.config/fzf/fzf.zsh
+[ -f $HOME/.local/share/fzf/fzf.zsh ] && source $HOME/.local/share/fzf/fzf.zsh
 
 # zsh syntax completion
 light_green="#b0e5b5"
