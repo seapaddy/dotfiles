@@ -134,7 +134,7 @@ set background=dark
 "let g:oceanic_next_terminal_italic = 1
 "colorscheme OceanicNext
 
-"let g:gruvbox_material_background = 'medium'
+"let g:gruvbox_material_background = 'hard'
 "colorscheme gruvbox-material
 
 colorscheme onehalfdark

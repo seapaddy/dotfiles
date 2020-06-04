@@ -27,6 +27,7 @@ setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 [ -x "$(command -v nvim)" ] && alias vi='nvim' # nvim
 [ -x "$(command -v rg)" ] && alias grep='rg' # ripgrep
 [ -x "$(command -v bat)" ] && alias cat='bat' # bat
+# gdb intel assembly display
 [ -f $HOME/.config/gdb/init ] && [ -x "$(command -v gdb)" ] && \
     alias gdb='gdb -nh -x $XDG_CONFIG_HOME/gdb/init' # gdb
 # tmux alias
@@ -50,9 +51,9 @@ function virtualenv_info () {
 
 # colours
 puple="#f1bef7"
-dim_yellow="#fcf7ab"
+dim_red="#f7adae"
 # zsh prompt
-START="%F{${dim_yellow}}arch%f : %F{${puple}}%~%f"
+START="%F{${dim_red}}arch%f : %F{${puple}}%~%f"
 END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
     precmd () { __git_ps1 "$(virtualenv_info) "${START} ${END} }
