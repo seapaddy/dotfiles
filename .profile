@@ -24,5 +24,5 @@ export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
 # Start desktop environment if one not already started
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
+	exec startx
 fi
