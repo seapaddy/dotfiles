@@ -1,2 +1,6 @@
 # ctags completion
 tags
+
+# clangd completion
+.clangd
+compile_commands.json
