@@ -42,6 +42,9 @@ super + y
 super + g
 	bspc node -s biggest
 
+super + {_,shift,shift+alt +} r 
+	bspc node @/ {-R 90,-E,-B}
+
 #
 # state/flags
 #

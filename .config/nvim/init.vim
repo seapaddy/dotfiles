@@ -2,7 +2,6 @@
 " PYTHON VIRTUAL ENVIRONMENT
 "==================================================================================================
 let g:python3_host_prog='$XDG_CACHE_HOME/nvim-venv/bin/python3'
-let g:python_recommended_style=0  "disable autoformat when opening python files
 
 "==================================================================================================
 " PLUG.VIM PLUGIN MANAGER
@@ -21,6 +20,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'rakr/vim-one'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'cocopon/iceberg.vim'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -30,6 +30,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+" jsx plugin
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 "==================================================================================================
@@ -145,7 +147,9 @@ set background=dark
 "let g:gruvbox_material_background = 'hard'
 "colorscheme gruvbox-material
 
-colorscheme onehalfdark
+colorscheme iceberg
+
+"colorscheme onehalfdark
 
 "colorscheme angr
 
