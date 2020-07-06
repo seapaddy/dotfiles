@@ -51,6 +51,9 @@ set hidden                    "change to other file without saving
 setlocal spelllang=en_gb
 autocmd FileType gitcommit setlocal spell  "enable spell git commits
 
+" live substitution
+set inccommand=split     
+
 " toggle spelling, wrapping, invisibles
 nmap <leader>s : set spell!<CR>
 nmap <leader>w : set wrap!<CR>

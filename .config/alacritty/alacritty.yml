@@ -25,6 +25,21 @@ scrolling:
 #    style: Medium Italic
 #  size: 9
 
+#font:
+#  normal:
+#    family: SF Mono
+#    style: Medium
+#  bold:
+#    family: SF Mono
+#    style: Semibold
+#  italic:
+#    family: SF Mono
+#    style: Medium Italic
+#  bold_italic:
+#    family: SF Mono
+#    style: Semibold Italic
+#  size: 7.5
+
 font:
   normal:
     family: SF Mono
@@ -68,7 +83,7 @@ font:
 #  bold_italic:
 #    family: Fira Code
 #    style: Retina
-#  size: 8.5
+#  size: 7.0
 
 #font:
 #  normal:
