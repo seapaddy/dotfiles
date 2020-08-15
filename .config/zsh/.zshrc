@@ -69,4 +69,4 @@ fi
     ZSH_HIGHLIGHT_STYLES[arg0]='fg=#b0e5b5' && ZSH_HIGHLIGHT_STYLES[path]=''
 
 # dotfiles
-[ -d $HOME/.config/dotfiles ] && alias config='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
+[ -d $HOME/.config/dotfiles ] && alias config='/usr/local/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'

@@ -8,7 +8,7 @@ let g:python3_host_prog="$XDG_CACHE_HOME/virtual-envs/neovim/bin/python3"
 "=======================================================
 call plug#begin('~/.local/share/nvim/plugged')
 " autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " nerdtree
 Plug 'scrooloose/nerdtree'
 " colorschemes 
