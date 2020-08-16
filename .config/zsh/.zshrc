@@ -12,6 +12,9 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias l='ls -lAv'
 
+# ip route colour output
+alias ip='ip -color=auto'
+
 # case insensitive completion if there is no matching case
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # move through menu when multiple choices
@@ -38,7 +41,7 @@ function virtualenv_info () {
 	if [ -n "$VIRTUAL_ENV" ]; then
 		venv="${VIRTUAL_ENV##*/}"
 	fi
-	[ -n "$venv" ] && echo "(venv:$venv)"
+	[ -n "$venv" ] && echo "(venv:$venv) "
 }
 
 # git
@@ -54,9 +57,9 @@ dim_red="#f7adae"
 START="%F{${dim_red}}arch%f : %F{${puple}}%~%f"
 END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
-	precmd () { __git_ps1 "$(virtualenv_info) "${START} ${END} }
+	precmd () { __git_ps1 "$(virtualenv_info)"${START} ${END} }
 else
-	PROMPT="$(virtualenv_info) "${START}${END}
+	PROMPT="$(virtualenv_info)"${START}${END}
 fi
 
 # fzf
