@@ -22,6 +22,9 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 # Add cargo to $PATH
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
+# hardware acceleration
+#export VDPAU_DRIVER="nvidia"
+
 # Start desktop environment if one not already started
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx

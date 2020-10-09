@@ -58,7 +58,10 @@ set inccommand=split
 nmap <leader>s : set spell!<CR>
 nmap <leader>w : set wrap!<CR>
 nmap <leader>j : set list!<CR>
-set listchars=tab:►\ ,trail:*,eol:¬,space:·
+"set listchars=tab:►\ ,trail:*,eol:¬,space:·
+"set listchars=tab:»·\ ,trail:*,eol:¬,space:·,
+set listchars=tab:›\ ,trail:*,eol:¬,space:·,
+
 
 " remove highlight after search
 nmap <leader>\ : nohlsearch<CR>
@@ -150,9 +153,9 @@ set background=dark
 "let g:gruvbox_material_background = 'hard'
 "colorscheme gruvbox-material
 
-colorscheme iceberg
+"colorscheme iceberg
 
-"colorscheme onehalfdark
+colorscheme onehalfdark
 
 "colorscheme angr
 
