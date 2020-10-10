@@ -105,6 +105,9 @@ augroup END
 "==================================================================================================
 " FZF
 "==================================================================================================
+" Open in split rather than floating window
+let g:fzf_layout={ 'down': '50%' }
+
 " Command for git grep
 command! -bang -nargs=* GGrep
 	\ call fzf#vim#grep(
