@@ -17,10 +17,9 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mhartington/oceanic-next'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'rakr/vim-one'
-Plug 'sainnhe/gruvbox-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'cocopon/iceberg.vim'
+Plug 'morhetz/gruvbox'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -136,9 +135,6 @@ set termguicolors " true colour display and colour schemes
 set background=dark
 "colorscheme palenight
 
-"colorscheme one
-"let g:one_allow_italics=1
-
 "colorscheme solarized8_flat
 
 "let ayucolor="light"  " for light version of theme
@@ -150,12 +146,10 @@ set background=dark
 "let g:oceanic_next_terminal_italic = 1
 "colorscheme OceanicNext
 
-"let g:gruvbox_material_background = 'hard'
-"colorscheme gruvbox-material
-
 "colorscheme iceberg
 
-colorscheme onehalfdark
+"colorscheme onehalflight
+colorscheme gruvbox
 
 "colorscheme angr
 
