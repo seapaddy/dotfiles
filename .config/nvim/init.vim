@@ -11,15 +11,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " colour toggle
 Plug 'rakr/vim-togglebg'
-" colour schemes 
-Plug 'ayu-theme/ayu-vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'mhartington/oceanic-next'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'cocopon/iceberg.vim'
-Plug 'morhetz/gruvbox'
+" treesitter colour scheme
+Plug 'sainnhe/gruvbox-material'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -31,6 +25,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " jsx plugin
 Plug 'maxmellon/vim-jsx-pretty'
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 
 "==================================================================================================
@@ -54,25 +50,27 @@ autocmd FileType gitcommit setlocal spell  "enable spell git commits
 set inccommand=split     
 
 " toggle spelling, wrapping, invisibles
-nmap <leader>s : set spell!<CR>
-nmap <leader>w : set wrap!<CR>
-nmap <leader>j : set list!<CR>
+nmap <leader>s :set spell!<CR>
+nmap <leader>w :set wrap!<CR>
+nmap <leader>j :set list!<CR>
 "set listchars=tab:►\ ,trail:*,eol:¬,space:·
 "set listchars=tab:»·\ ,trail:*,eol:¬,space:·,
 set listchars=tab:›\ ,trail:*,eol:¬,space:·,
 
-
 " remove highlight after search
-nmap <leader>\ : nohlsearch<CR>
+nmap <leader>\ :nohlsearch<CR>
+
+" set colorcolumn at line 80
+nmap <leader>c :execute "set cc=" . (&cc == "" ? "100" : "")<CR>
 
 " automatic line wrapping 
 autocmd FileType markdown,text setlocal tw=100
 autocmd FileType tex setlocal tw=118
 
 " set tabwidth and shiftwidth
-nmap <leader>2 : set ts=2 sw=2<CR>
-nmap <leader>4 : set ts=4 sw=4<CR>
-nmap <leader>8 : set ts=8 sw=8<CR>
+nmap <leader>2 :set ts=2 sw=2<CR>
+nmap <leader>4 :set ts=4 sw=4<CR>
+nmap <leader>8 :set ts=8 sw=8<CR>
 
 command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
@@ -131,6 +129,19 @@ nmap <leader>r :ZRg!<CR>
 nmap <leader>b :Buffers<CR>
 
 "==================================================================================================
+" TREESITTER
+"==================================================================================================
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = "maintained",  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	highlight = {
+		enable = true,              -- false will disable the whole extension
+		disable = {  },             -- list of language that will be disabled
+	},
+}
+EOF
+
+"==================================================================================================
 " COLOUR SETTINGS
 "==================================================================================================
 set termguicolors " true colour display and colour schemes
@@ -152,7 +163,10 @@ set background=dark
 "colorscheme iceberg
 
 "colorscheme onehalflight
-colorscheme gruvbox
+
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_background = 'medium'
+colorscheme gruvbox-material
 
 "colorscheme angr
 
