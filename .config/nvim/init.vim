@@ -9,11 +9,8 @@ let g:python3_host_prog='$XDG_CACHE_HOME/nvim-venv/bin/python3'
 call plug#begin('~/.local/share/nvim/plugged')
 " auto completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" colour toggle
-Plug 'rakr/vim-togglebg'
 " treesitter colour scheme
 Plug 'sainnhe/gruvbox-material'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -23,8 +20,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" jsx plugin
-Plug 'maxmellon/vim-jsx-pretty'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
@@ -77,6 +72,8 @@ command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 "==================================================================================================
 " COC.NVIM
 "==================================================================================================
+" don't run coc on startup
+let g:coc_start_at_startup = v:false
 " diagnostic message updates
 set updatetime=300
 
@@ -96,7 +93,6 @@ set splitbelow
 "==================================================================================================
 augroup vimrc_autocmds
 	autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
-	autocmd BufEnter *.cpp,*.hpp,*.c,*.h match OverLength /\%101v.*/
 	autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
 augroup END
 
@@ -170,4 +166,5 @@ colorscheme gruvbox-material
 
 "colorscheme angr
 
-call togglebg#map("<F5>")
+" toggle background light and dark
+nmap <F5> :execute "set bg=" . (&bg == "dark" ? "light" : "dark")<CR>

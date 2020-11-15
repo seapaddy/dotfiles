@@ -6,7 +6,9 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "SF Mono:pixelsize=12:weight=medium:antialias=true:autohint=false";
+//static char *font = "SF Mono:pixelsize=12:weight=semibold:antialias=true:autohint=false";
+//static char *font = "Source Code Pro:pixelsize=12.8:weight=semibold:antialias=true:autohint=false";
+static char *font = "JetBrains Mono:pixelsize=12.8:weight=regular:antialias=true:autohint=false";
 static int borderpx = 2;
 
 /*
