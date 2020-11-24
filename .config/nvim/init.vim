@@ -22,6 +22,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
+" lsp
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 "==================================================================================================
@@ -59,8 +61,8 @@ nmap <leader>\ :nohlsearch<CR>
 nmap <leader>c :execute "set cc=" . (&cc == "" ? "100" : "")<CR>
 
 " automatic line wrapping 
-autocmd FileType markdown,text setlocal tw=100
-autocmd FileType tex setlocal tw=118
+"autocmd FileType markdown,text setlocal tw=100
+"autocmd FileType tex setlocal tw=118
 
 " set tabwidth and shiftwidth
 nmap <leader>2 :set ts=2 sw=2<CR>
@@ -93,7 +95,7 @@ set splitbelow
 "==================================================================================================
 augroup vimrc_autocmds
 	autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
-	autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
+	"autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
 augroup END
 
 "==================================================================================================
@@ -134,6 +136,25 @@ require'nvim-treesitter.configs'.setup {
 		enable = true,              -- false will disable the whole extension
 		disable = {  },             -- list of language that will be disabled
 	},
+}
+EOF
+
+"==================================================================================================
+" LSP
+"==================================================================================================
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+lua <<EOF
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.rls.setup{
+	log_level = vim.lsp.protocol.MessageType.Error;
+	message_level = vim.lsp.protocol.MessageType.Error;
+	settings = {
+		rust = {
+			show_warnings = true;
+		}
+	}
 }
 EOF
 

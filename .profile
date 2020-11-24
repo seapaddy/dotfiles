@@ -21,6 +21,8 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # Add cargo to $PATH
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
+# Add neovim to $PATH
+export PATH="$HOME/.local/share/neovim/bin:$PATH"
 
 # hardware acceleration
 #export VDPAU_DRIVER="nvidia"

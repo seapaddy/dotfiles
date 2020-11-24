@@ -4,5 +4,5 @@
 	"latex.build.executable": "xelatex",
 	"latex.build.args": [ "-output-directory=compiled" ],
 	"latex.build.onSave": true,
-	"clangd.enabled": true
+	"clangd.enabled": false
 }
