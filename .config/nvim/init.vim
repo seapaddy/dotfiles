@@ -93,25 +93,20 @@ set splitright
 set splitbelow
 
 "===============================================================================
-" 80 LINE LIMIT
-"===============================================================================
-augroup vimrc_autocmds
-	autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#111111
-	"autocmd BufEnter *.tex,*.md match OverLength /\%120v.*/
-augroup END
-
-"===============================================================================
 " FZF
 "===============================================================================
 " Open in split rather than floating window
 let g:fzf_layout={ 'down': '50%' }
 " Command for git grep
 command! -bang -nargs=* GGrep
-	\ call fzf#vim#grep('git grep --line-number -- '.shellescape(<q-args>), 0,
-	\ fzf#vim#with_preview(
-	\ {'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+	\ call fzf#vim#grep('git grep
+	\                   --line-number
+	\                   -- '.shellescape(<q-args>), 0,
+	\ fzf#vim#with_preview({'dir':
+	\     systemlist('git rev-parse --show-toplevel')[0]}),
+	\ <bang>0)
 
-" Rg without searching filename (Options delimiter nth 4 only analyses 4th : )
+" Rg search without filename (options delimiter nth 4 only analyses 4th : )
 command! -bang -nargs=* ZRg
 	\ call fzf#vim#grep('rg
 	\                   --column
@@ -120,12 +115,14 @@ command! -bang -nargs=* ZRg
 	\                   --color=always
 	\                   --smart-case 
 	\                   -- '.shellescape(<q-args>), 1,
-	\ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+	\ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}),
+	\ <bang>0)
 
-" Ag without searching filename
+" Ag search without filename
 command! -bang -nargs=* ZAg 
 	\ call fzf#vim#ag(<q-args>,
-	\ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+	\ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}),
+	\ <bang>0)
 
 " fzf shortcuts
 nmap <leader>f :Files<CR>
@@ -138,10 +135,13 @@ nmap <leader>b :Buffers<CR>
 "===============================================================================
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained", -- all, maintained, or list of languages
+	-- all, maintained, or list of languages
+	ensure_installed = "maintained",
 	highlight = {
-		enable = true,               -- false will disable the whole extension
-		disable = {  },              -- list of language that will be disabled
+		-- false will disable the whole extension
+		enable = true,
+		-- list of language that will be disabled
+		disable = {  },
 	},
 }
 EOF
