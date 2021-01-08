@@ -44,7 +44,6 @@ set signcolumn=yes  "left side errors always visible
 set hidden          "change to other file without saving
 " spelling
 setlocal spelllang=en_gb
-autocmd FileType gitcommit setlocal spell  "enable spell git commits
 
 " live substitution
 set inccommand=split     
@@ -58,13 +57,9 @@ set listchars=tab:›\ ,trail:*,eol:¬,space:·,
 " remove highlight after search
 nmap <leader>\ :nohlsearch<CR>
 
-" set colorcolumn at line 81
-set cc=81
-nmap <leader>c :execute "set cc=" . (&cc == "" ? "81" : "")<CR>
-
-" automatic line wrapping 
-"autocmd FileType markdown,text setlocal tw=100
-"autocmd FileType tex setlocal tw=118
+" set colorcolumn at line 101
+set cc=101
+nmap <leader>c :execute "set cc=" . (&cc == "" ? "101" : "")<CR>
 
 " set tabwidth and shiftwidth
 nmap <leader>2 :set ts=2 sw=2<CR>
