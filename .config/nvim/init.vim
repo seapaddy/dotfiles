@@ -23,10 +23,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" treesitter
+" treesitter, lsp, completion
 Plug 'nvim-treesitter/nvim-treesitter'
-" lsp
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 call plug#end()
 
 "===============================================================================
@@ -77,7 +77,7 @@ let g:coc_start_at_startup = v:false
 set updatetime=300
 
 " use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 "===============================================================================
 " NERDTREE
@@ -142,15 +142,47 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 "===============================================================================
-" LSP
+" LSP & COMPLETION
 "===============================================================================
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-
 lua <<EOF
-require'lspconfig'.clangd.setup{}
+local completion_lsp_attach = function(client)
+	vim.api.nvim_buf_set_keymap(0, 'n', 'K',
+	    '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>',
+	    '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, 'n', 'gd',
+	    '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, 'n', 'gr',
+	    '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
+
+	require('completion').on_attach(client)
+end
+	
+-- C/C++ language server
+require'lspconfig'.clangd.setup {
+	cmd = {
+		"clangd",
+		"--suggest-missing-includes",
+		"--clang-tidy",
+		"--header-insertion=iwyu",
+	},
+	on_attach=completion_lsp_attach
+}
+
+-- Rust language server
 require'lspconfig'.rust_analyzer.setup{}
+
+-- Typescript language server
+require'lspconfig'.tsserver.setup{
+	cmd = { "typescript-language-server", "--stdio" },
+	on_attach=completion_lsp_attach
+}
 EOF
+
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+let g:completion_enable_auto_popup = 0
+imap <silent> <c-space> <Plug>(completion_trigger)
 
 "===============================================================================
 " COLOUR SETTINGS
