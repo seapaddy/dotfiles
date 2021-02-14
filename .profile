@@ -19,12 +19,17 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
+# Set computer name for command prompt
+export PCNAME="arch"
+
 # Add cargo to $PATH
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 # Add neovim to $PATH
 export PATH="$HOME/.local/share/neovim/bin:$PATH"
 # Add .local/bin to $PATH
 export PATH="$HOME/.local/bin:$PATH"
+# ADD npm to $PATH
+export PATH="$HOME/.local/share/npm/bin:$PATH"
 
 # hardware acceleration
 #export VDPAU_DRIVER="nvidia"

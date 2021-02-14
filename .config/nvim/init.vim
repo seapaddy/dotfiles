@@ -181,7 +181,7 @@ EOF
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
-let g:completion_enable_auto_popup = 0
+"let g:completion_enable_auto_popup = 0
 imap <silent> <c-space> <Plug>(completion_trigger)
 
 "===============================================================================
@@ -195,7 +195,7 @@ set background=dark
 "colorscheme OceanicNext
 
 let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
 
 "colorscheme edge
