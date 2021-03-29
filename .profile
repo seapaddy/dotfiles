@@ -17,7 +17,17 @@ export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export R_PROFILE_USER="$XDG_CONFIG_HOME/R/rprofile"
+export R_LIBS_USER="$XDG_CONFIG_HOME/R/packages"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+# Wayland additions, hold off for the moment, nvidia bad
+#export MOZ_ENABLE_WAYLAND=1
+#export QT_QPA_PLATFORM=wayland
+#export LIBVA_DRIVER_NAME=nouveau
+
+# Hardware acceleration
+export VDPAU_DRIVER=nvidia
 
 # Set computer name for command prompt
 export PCNAME="arch"
@@ -30,9 +40,6 @@ export PATH="$HOME/.local/share/neovim/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # ADD npm to $PATH
 export PATH="$HOME/.local/share/npm/bin:$PATH"
-
-# hardware acceleration
-#export VDPAU_DRIVER="nvidia"
 
 # Start desktop environment if one not already started
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then

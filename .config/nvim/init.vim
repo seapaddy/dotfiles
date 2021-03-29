@@ -13,7 +13,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sainnhe/gruvbox-material'
 Plug 'mhartington/oceanic-next'
 Plug 'sainnhe/edge'
-Plug 'vigoux/oak'
 " fzf
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -154,9 +153,16 @@ local completion_lsp_attach = function(client)
 	    '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true})
 	vim.api.nvim_buf_set_keymap(0, 'n', 'gr',
 	    '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
+	
+	-- disable lsp client
+	vim.api.nvim_buf_set_keymap(0, 'n', '}',
+	    '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>', {noremap = true})
 
 	require('completion').on_attach(client)
 end
+
+-- CMake language server
+require'lspconfig'.cmake.setup{}
 	
 -- C/C++ language server
 require'lspconfig'.clangd.setup {
@@ -170,11 +176,18 @@ require'lspconfig'.clangd.setup {
 }
 
 -- Rust language server
-require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.rust_analyzer.setup{
+	on_attach=completion_lsp_attach
+}
 
 -- Typescript language server
 require'lspconfig'.tsserver.setup{
 	cmd = { "typescript-language-server", "--stdio" },
+	on_attach=completion_lsp_attach
+}
+
+-- Python language server
+require'lspconfig'.pyls.setup {
 	on_attach=completion_lsp_attach
 }
 EOF
@@ -190,18 +203,15 @@ imap <silent> <c-space> <Plug>(completion_trigger)
 set termguicolors " true colour display and colour schemes
 set background=dark
 
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
 
 "colorscheme edge
-
-"let g:oak_virtualtext_bg = 1
-"colorscheme oak
+"colorscheme OceanicNext
+colorscheme gruvbox-material
 
 " toggle background light and dark
 nmap <F5> :execute "set bg=" . (&bg == "dark" ? "light" : "dark")<CR>

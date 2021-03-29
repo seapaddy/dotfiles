@@ -31,5 +31,4 @@ fi
 
 picom --config "$HOME/.config/picom/picom.conf" &
 feh --bg-fill --no-fehbg "$HOME/.config/wallpaper/childhood games.jpg" &
-nvidia-settings --load-config-only --config="$HOME/.config/nvidia/settings" & 
 exec dwm

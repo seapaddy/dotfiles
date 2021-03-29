@@ -57,7 +57,7 @@ dim_red="#f7adae"
 START="%F{${dim_red}}$PCNAME%f : %F{${puple}}%~%f"
 END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
-	precmd () { __git_ps1 "$(virtualenv_info)"${START} ${END} }
+	precmd () { __git_ps1 "%F{158}$(virtualenv_info)%f"${START} ${END} }
 else
 	PROMPT="$(virtualenv_info)"${START}${END}
 fi
@@ -65,10 +65,11 @@ fi
 # fzf
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f $HOME/.local/share/fzf/fzf.zsh ] && source $HOME/.local/share/fzf/fzf.zsh
+[ -x "$(command -v fzf)" ] && [ -f $HOME/.config/zsh/fzf.zsh ] && source $HOME/.config/zsh/fzf.zsh
 
 # zsh syntax completion
 light_green="#b0e5b5"
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
 	ZSH_HIGHLIGHT_STYLES[arg0]='fg='${light_green} && ZSH_HIGHLIGHT_STYLES[path]=''
+
