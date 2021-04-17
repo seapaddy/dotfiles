@@ -115,7 +115,7 @@ font:
   bold_italic:
     family: JetBrains Mono
     style: Bold Italic
-  size: 9.0
+  size: 9.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -140,12 +140,74 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
+schemes:
+  default: &default
+    primary:
+      background: '#0e0e0e'
+      foreground: '#c9c9c9'
+    # Normal colors
+    normal:
+      black:   '#1d1f21'
+      red:     '#cc6666'
+      green:   '#65bd88'
+      yellow:  '#f0c674'
+      blue:    '#81a2be'
+      magenta: '#b294bb'
+      cyan:    '#8abeb7'
+      white:   '#c5c8c6'
+    # Bright colors
+    bright:
+      black:   '#666666'
+      red:     '#d54e53'
+      green:   '#49ca4a'
+      yellow:  '#e7c547'
+      blue:    '#7aa6da'
+      magenta: '#c397d8'
+      cyan:    '#90c0cf'
+      white:   '#eaeaea'
+    # Dim colors
+    dim:
+      black:   '#131415'
+      red:     '#864343'
+      green:   '#777c44'
+      yellow:  '#9e824c'
+      blue:    '#556a7d'
+      magenta: '#75617b'
+      cyan:    '#5b7d78'
+      white:   '#828482'
+
+  gruvbox_material: &gruvbox
+    primary:
+      # hard contrast: background = '0x1d2021'
+      background: '0x1d2021'
+      # soft contrast: background = '0x32302f'
+      foreground: '0xebdbb2'
+
+    # Normal colors
+    normal:
+      black:   '0x282828'
+      red:     '0xcc241d'
+      green:   '0x98971a'
+      yellow:  '0xd79921'
+      blue:    '0x458588'
+      magenta: '0xb16286'
+      cyan:    '0x689d6a'
+      white:   '0xa89984'
+
+    # Bright colors
+    bright:
+      black:   '0x928374'
+      red:     '0xfb4934'
+      green:   '0xb8bb26'
+      yellow:  '0xfabd2f'
+      blue:    '0x83a598'
+      magenta: '0xd3869b'
+      cyan:    '0x8ec07c'
+      white:   '0xebdbb2'
+
 # Colors (Tomorrow Night)
-colors:
+colors: *default
   # Default colors
-  primary:
-    background: '#0e0e0e'
-    foreground: '#c9c9c9'
 
     # Bright and dim foreground colors
     #
@@ -212,42 +274,6 @@ colors:
   #selection:
   #  text: CellBackground
   #  background: CellForeground
-
-  # Normal colors
-  normal:
-    black:   '#1d1f21'
-    red:     '#cc6666'
-    green:   '#65bd88'
-    yellow:  '#f0c674'
-    blue:    '#81a2be'
-    magenta: '#b294bb'
-    cyan:    '#8abeb7'
-    white:   '#c5c8c6'
-
-  # Bright colors
-  bright:
-    black:   '#666666'
-    red:     '#d54e53'
-    green:   '#49ca4a'
-    yellow:  '#e7c547'
-    blue:    '#7aa6da'
-    magenta: '#c397d8'
-    cyan:    '#90c0cf'
-    white:   '#eaeaea'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black:   '#131415'
-    red:     '#864343'
-    green:   '#777c44'
-    yellow:  '#9e824c'
-    blue:    '#556a7d'
-    magenta: '#75617b'
-    cyan:    '#5b7d78'
-    white:   '#828482'
 
   # Indexed Colors
   #
