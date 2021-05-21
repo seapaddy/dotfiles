@@ -54,7 +54,7 @@ function virtualenv_info () {
 puple="#f1bef7"
 dim_red="#f7adae"
 # zsh prompt
-START="%F{${dim_red}}$PCNAME%f : %F{${puple}}%~%f"
+START="%B%F{${dim_red}}$PCNAME%f%b : %B%F{${puple}}%~%f%b"
 END="%F{${puple}}%f%s :: "
 if [ "$(command -v __git_ps1)" ]; then
 	precmd () { __git_ps1 "%F{158}$(virtualenv_info)%f"${START} ${END} }
