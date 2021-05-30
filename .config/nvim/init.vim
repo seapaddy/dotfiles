@@ -25,7 +25,7 @@ Plug 'tpope/vim-surround'
 " treesitter, lsp, completion
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 "===============================================================================
@@ -143,6 +143,9 @@ EOF
 "===============================================================================
 " LSP & COMPLETION
 "===============================================================================
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
 lua <<EOF
 local completion_lsp_attach = function(client)
 	vim.api.nvim_buf_set_keymap(0, 'n', 'K',
@@ -153,13 +156,32 @@ local completion_lsp_attach = function(client)
 	    '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true})
 	vim.api.nvim_buf_set_keymap(0, 'n', 'gr',
 	    '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
-	
+
 	-- disable lsp client
 	vim.api.nvim_buf_set_keymap(0, 'n', '}',
 	    '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>', {noremap = true})
-
-	require('completion').on_attach(client)
 end
+
+-- Auto completion compe
+require'compe'.setup{
+	enable = true;
+	autocomplete = true;
+	debug = false;
+	min_length = 1;
+	preselect = 'enable';
+	throttle_time = 80;
+	source_timeout = 200;
+	incomplete_delay = 400;
+	max_abbr_width = 100;
+	max_kind_width = 100;
+	max_menu_width = 100;
+	documentation = true;
+
+	source = {
+		path = true;
+		nvim_lsp = true;
+	};
+}
 
 -- CMake language server
 require'lspconfig'.cmake.setup{}
@@ -172,30 +194,28 @@ require'lspconfig'.clangd.setup {
 		"--clang-tidy",
 		"--header-insertion=iwyu",
 	},
-	on_attach=completion_lsp_attach
+	on_attach=completion_lsp_attach,
 }
 
 -- Rust language server
 require'lspconfig'.rust_analyzer.setup{
-	on_attach=completion_lsp_attach
+	on_attach=completion_lsp_attach,
 }
 
 -- Typescript language server
 require'lspconfig'.tsserver.setup{
 	cmd = { "typescript-language-server", "--stdio" },
-	on_attach=completion_lsp_attach
+	on_attach=completion_lsp_attach,
 }
 
 -- Python language server
 require'lspconfig'.pyls.setup {
-	on_attach=completion_lsp_attach
+	on_attach=completion_lsp_attach,
 }
 EOF
 
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
 "let g:completion_enable_auto_popup = 0
-imap <silent> <c-space> <Plug>(completion_trigger)
+inoremap <silent><expr> <c-space> compe#complete()
 
 "===============================================================================
 " COLOUR SETTINGS

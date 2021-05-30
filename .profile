@@ -22,11 +22,6 @@ export R_PROFILE_USER="$XDG_CONFIG_HOME/R/rprofile"
 export R_LIBS_USER="$XDG_CONFIG_HOME/R/packages"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
-# Wayland additions, hold off for the moment, nvidia bad
-#export MOZ_ENABLE_WAYLAND=1
-#export QT_QPA_PLATFORM=wayland
-#export LIBVA_DRIVER_NAME=nouveau
-
 # Hardware acceleration
 export VDPAU_DRIVER=nvidia
 
