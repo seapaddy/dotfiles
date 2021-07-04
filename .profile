@@ -31,7 +31,7 @@ export PCNAME="arch"
 # Add cargo to $PATH
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 # Add neovim to $PATH
-export PATH="$HOME/.local/share/neovim/bin:$PATH"
+export PATH="$HOME/.local/neovim/bin:$PATH"
 # Add .local/bin to $PATH
 export PATH="$HOME/.local/bin:$PATH"
 # ADD npm to $PATH

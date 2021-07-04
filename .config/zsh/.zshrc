@@ -35,6 +35,8 @@ setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS HIST_IGNORE_SPACE
 [ -f $HOME/.config/tmux/tmux.conf ] && alias tmux='tmux -u -f $HOME/.config/tmux/tmux.conf'
 # dotfiles
 [ -d $HOME/.config/dotfiles ] && alias config='/usr/bin/git --git-dir=$HOME/.config/dotfiles/ --work-tree=$HOME'
+# default python environment
+[ -d $HOME/.local/venv ] && alias venv='source $HOME/.local/venv/bin/activate'
 
 # determine python enironment
 function virtualenv_info () {

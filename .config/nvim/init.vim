@@ -1,18 +1,17 @@
 "===============================================================================
 " PYTHON VIRTUAL ENVIRONMENT
 "===============================================================================
-let g:python3_host_prog='$XDG_CACHE_HOME/nvim-venv/bin/python3'
+let g:python3_host_prog='$HOME/.local/venv/bin/python3'
 
 "===============================================================================
 " PLUG.VIM PLUGIN MANAGER
 "===============================================================================
 call plug#begin('~/.local/share/nvim/plugged')
-" auto completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " treesitter colour scheme
 Plug 'sainnhe/gruvbox-material'
 Plug 'mhartington/oceanic-next'
 Plug 'sainnhe/edge'
+Plug 'eddyekofo94/gruvbox-flat.nvim'
 " fzf
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -23,7 +22,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " treesitter, lsp, completion
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 call plug#end()
@@ -38,7 +37,7 @@ set number
 set relativenumber
 set tabstop=4       "number of spaces for a tab
 set shiftwidth=4    "number of spaces for a >>
-"set expandtab       "space characters when tab is pressed
+set expandtab       "space characters when tab is pressed
 set signcolumn=yes  "left side errors always visible
 set hidden          "change to other file without saving
 " spelling
@@ -67,16 +66,8 @@ nmap <leader>8 :set ts=8 sw=8<CR>
 
 command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
-"===============================================================================
-" COC.NVIM
-"===============================================================================
-" don't run coc on startup
-let g:coc_start_at_startup = v:false
 " diagnostic message updates
 set updatetime=300
-
-" use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
 
 "===============================================================================
 " NERDTREE
@@ -120,6 +111,7 @@ command! -bang -nargs=* ZAg
 
 " fzf shortcuts
 nmap <leader>f :Files<CR>
+nmap <leader>g :GFiles<CR>
 nmap <leader>a :ZAg<CR>
 nmap <leader>r :ZRg!<CR>
 nmap <leader>b :Buffers<CR>
@@ -129,13 +121,9 @@ nmap <leader>b :Buffers<CR>
 "===============================================================================
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-	-- all, maintained, or list of languages
-	ensure_installed = "maintained",
 	highlight = {
-		-- false will disable the whole extension
 		enable = true,
-		-- list of language that will be disabled
-		disable = {  },
+		disable = {},
 	},
 }
 EOF
@@ -180,6 +168,7 @@ require'compe'.setup{
 	source = {
 		path = true;
 		nvim_lsp = true;
+		buffer = true;
 	};
 }
 
@@ -209,9 +198,10 @@ require'lspconfig'.tsserver.setup{
 }
 
 -- Python language server
-require'lspconfig'.pyls.setup {
+require'lspconfig'.pylsp.setup {
 	on_attach=completion_lsp_attach,
 }
+
 EOF
 
 "let g:completion_enable_auto_popup = 0
@@ -229,9 +219,12 @@ let g:oceanic_next_terminal_italic = 1
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_background = 'hard'
 
+let g:gruvbox_flat_style = "hard"
+
 "colorscheme edge
 "colorscheme OceanicNext
-colorscheme gruvbox-material
+"colorscheme gruvbox-material
+colorscheme gruvbox-flat
 
 " toggle background light and dark
 nmap <F5> :execute "set bg=" . (&bg == "dark" ? "light" : "dark")<CR>
