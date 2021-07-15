@@ -40,6 +40,7 @@ set shiftwidth=4    "number of spaces for a >>
 set expandtab       "space characters when tab is pressed
 set signcolumn=yes  "left side errors always visible
 set hidden          "change to other file without saving
+set nofoldenable    "disable folds
 " spelling
 setlocal spelllang=en_gb
 
