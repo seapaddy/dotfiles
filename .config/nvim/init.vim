@@ -34,13 +34,14 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 set number
-set relativenumber
+"set relativenumber
 set tabstop=4       "number of spaces for a tab
 set shiftwidth=4    "number of spaces for a >>
 set expandtab       "space characters when tab is pressed
 set signcolumn=yes  "left side errors always visible
 set hidden          "change to other file without saving
 set nofoldenable    "disable folds
+set mouse=a         "enable mouse use
 " spelling
 setlocal spelllang=en_gb
 
@@ -173,11 +174,18 @@ require'compe'.setup{
 	};
 }
 
+-- Haskell language server
+require'lspconfig'.hls.setup{
+    cmd = { "haskell-language-server-wrapper", "--lsp" },
+    filetypes = { "haskell", "lhaskell" },
+	on_attach=completion_lsp_attach,
+}
+
 -- CMake language server
 require'lspconfig'.cmake.setup{}
 	
 -- C/C++ language server
-require'lspconfig'.clangd.setup {
+require'lspconfig'.clangd.setup{
 	cmd = {
 		"clangd",
 		"--suggest-missing-includes",
